@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="modal_create_show_schedule">
+    <div id="modalCreateShowSchedule" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Show-schedule Information</h5>
+                    <i type="button" class="icon-copy fas fa-close btn-close" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"></i>
+<!--                                        <i class="icon-copy fa fa-close" aria-hidden="true"></i>-->
+                </div>
+                <div class="modal-body">
+                    <div class="modal-alert-danger hide"></div>
+
+                    <form id="frmCreateShowSchedule" method="post">
+                        <fieldset class="g-3">
+                            <div class = "row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="movie">Movie</label>
+                                    <select class = "form-control" id="movie" name="movie">
+
+                                    </select>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label class="form-label" for="branch">Branch</label>
+                                    <select class = "form-control" id="branch" name="branch">
+
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="room">Room</label>
+                                    <select class = "form-control" id="room" name="room">
+
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="showDate" class="form-label">Show Date</label>
+                                    <input class="form-control" type="date"  id="showDate" name="showDate" placeholder="Enter Show Date"/>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="showTimeSlot" class="form-label">Show Time Slot</label>
+                                    <input class="form-control" type="time"  id="showTimeSlot" name="showTimeSlot" placeholder="Enter Show Time Slot"/>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCreateShowSchedule" class="btn btn-outline-success">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Create Show Schedule
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-close" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Banking Transaction NodeJS</title>
+
+    <%- include('../../partials/head'); %>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <%- include('./header'); %>
+
+        <div class="box-body">
+
+            <%- include('../../partials/tempCustomer'); %>
+
+            <input type="hidden" id="currentRow"/>
+
+            <table id="tbListCustomers" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>#</th>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Balance</th>
+                        <th>Province</th>
+                        <th>District</th>
+                        <th>Ward</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="loader hide"></div>
+
+    <div class="footer"></div>
+
+    <%- include('../../partials/modalCreateCustomer'); %>
+
+    <%- include('../../partials/modalUpdateCustomer'); %>
+
+    <%- include('../../partials/modalDeposit'); %>
+
+    <%- include('../../partials/modalWithdraw'); %>
+
+    <%- include('../../partials/modalTransfer'); %>
+
+    <%- include('../../partials/tempOption'); %>
+
+    <%- include('../../partials/footer'); %>
+
+    <%- include('../../partials/script'); %>
+
+    <script src="socket.io/socket.io.js"></script>
+    
+    <script type="module" src="lib/js/main.js"></script>
+</body>
+</html>

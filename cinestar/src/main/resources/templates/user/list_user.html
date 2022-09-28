@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+    <meta content="Coderthemes" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <th:block th:replace="/layout/head :: head"/>
+    <script src="/assets/js/app/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+    <th:block th:replace="/layout/navbar :: navbar"/>
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div th:if="${user.role.getId() == 3}">
+        <th:block th:replace="/layout/left_sidebar_admin :: left_side_admin"/>
+    </div>
+
+    <div th:if="${user.role.getId() == 2}">
+        <th:block th:replace="/layout/left_sidebar_staff :: left_side_staff"/>
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Minton</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                                    <li class="breadcrumb-item active">Tickets</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Tickets</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
+
+                            <div class="text-center mb-2">
+                                <div class="row">
+                                    <div class="col-md-6 col-xl-3">
+                                        <div class="card-box">
+                                            <i class="fe-tag font-24"></i>
+                                            <h3>25563</h3>
+                                            <p class="text-uppercase mb-1 font-13 font-weight-medium">Total tickets</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-xl-3">
+                                        <div class="card-box">
+                                            <i class="fe-archive font-24"></i>
+                                            <h3 class="text-warning">6952</h3>
+                                            <p class="text-uppercase mb-1 font-13 font-weight-medium">Pending
+                                                Tickets</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-xl-3">
+                                        <div class="card-box">
+                                            <i class="fe-shield font-24"></i>
+                                            <h3 class="text-success">18361</h3>
+                                            <p class="text-uppercase mb-1 font-13 font-weight-medium">Closed Tickets</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-xl-3">
+                                        <div class="card-box">
+                                            <i class="fe-delete font-24"></i>
+                                            <h3 class="text-danger">250</h3>
+                                            <p class="text-uppercase mb-1 font-13 font-weight-medium">Deleted
+                                                Tickets</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h4 style="font-size: 30px">
+                                        <i class="fas fa-users" aria-hidden="true"></i>
+                                        <strong> List Account </strong>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+
+                                <div class="col-sm-8 ">
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <a style="box-shadow: 0 0 1px 1px #4a4b59;"
+                                           class="btn btn-light create-modal float-end">
+                                            <i class="fas fa-user-plus" aria-hidden="true"></i>
+                                            <span><strong> Add New Account</strong></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 header-search">
+                                    <form>
+                                        <div class="form-group mb-0">
+                                            <i id="search-icon" class="icon-copy fa fa-search" aria-hidden="true"></i>
+                                            <input id="search-input-user" type="text" class="form-control search-input"
+                                                   placeholder="Search Here">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100"
+                                   cellspacing="0" id="tickets-table">
+                                <thead class="bg-light">
+                                <tr>
+                                    <th class="font-weight-medium">ID</th>
+                                    <th class="font-weight-medium">Username</th>
+                                    <th class="font-weight-medium">Full Name</th>
+                                    <th class="font-weight-medium">Phone</th>
+                                    <th class="font-weight-medium">Email</th>
+                                    <th class="font-weight-medium">Address</th>
+                                    <th class="font-weight-medium">Date Of Birth</th>
+                                    <th class="font-weight-medium">Status</th>
+                                    <th class="font-weight-medium">Role</th>
+                                    <th class="font-weight-medium" style="width: 120px">Action</th>
+                                </tr>
+                                </thead>
+
+                                <tbody class="font-14">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- end col -->
+                </div>
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <th:block th:replace="/layout/footer :: footer"/>
+        <!-- end Footer -->
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+</div>
+
+<th:block th:replace="/user/modal_update :: modal_update_account"/>
+<th:block th:replace="/user/modal_create :: modal_create_account"/>
+<th:block th:replace="/user/modal_view_profile :: modal_view_profile"/>
+<th:block th:replace="/user/temp_user_active :: temp_list_table_user_active"/>
+<th:block th:replace="/user/temp_user_block :: temp_list_table_user_block"/>
+<th:block th:replace="/user/temp_option :: temp_option"/>
+
+
+<script src="/assets/js/app/custom-validation.js"></script>
+<th:block th:replace="/layout/script :: script-app"/>
+<th:block th:replace="/layout/script :: script-page"></th:block>
+<script src="/assets/js/app/jquery.validate.js"></script>
+</body>
+
+<script>
+    let page = {
+        url: {
+            getAllUser: App.BASE_URL + "/users",
+            getUserById: App.BASE_URL + "/users/",
+            createUser: App.BASE_URL + "/users/create",
+            updateUser: App.BASE_URL + "/users/update/",
+            blockUser: App.BASE_URL + "/users/block/",
+            getAllRole: App.BASE_URL + "/roles",
+            searchUser: App.BASE_URL + "/users/search"
+        },
+        element: {},
+        loadData: {},
+        commands: {},
+        dialogs: {
+            element: {},
+            commands: {}
+        }
+    }
+
+    page.element.tbBody = $("#tickets-table tbody");
+    page.element.searchIcon = $('#search-icon');
+    page.element.searchInput = $("#search-input-user");
+    page.element.tempUserActive = $("#tempUserActive");
+    page.element.tempUserBlock = $("#tempUserBlock");
+    // page.element.tempOption = $("#tempOption");
+
+    page.dialogs.element.mdCreate = $("#modalCreateAccount");
+    page.dialogs.element.mdUpdate = $("#modalUpdateAccount")
+
+    page.dialogs.element.btnCreate = $("#btnCreateAccount")
+    page.dialogs.element.btnUpdate = $("#btnUpdateAccount")
+    page.dialogs.element.btnClose = $(".btn-close");
+
+    page.dialogs.element.frmCreate = $("#frmCreateAccount");
+    page.dialogs.element.frmUpdate = $("#frmUpdateAccount");
+
+    page.dialogs.element.handleCre = $(".create-modal");
+
+    page.dialogs.element.usernameCre = $("#username");
+    page.dialogs.element.passwordCre = $("#password");
+    page.dialogs.element.fullNameCre = $("#fullName");
+    page.dialogs.element.phoneCre = $("#phone");
+    page.dialogs.element.emailCre = $("#email");
+    page.dialogs.element.addressCre = $("#address");
+    page.dialogs.element.dateOfBirthCre = $("#dateOfBirth");
+    page.dialogs.element.roleIdCre = $("#role");
+    // page.dialogs.element.roleNameCre = $('#role option:selected');
+
+    page.dialogs.element.fullNameUp = $("#fullNameUp");
+    page.dialogs.element.phoneUp = $("#phoneUp");
+    page.dialogs.element.emailUp = $("#emailUp");
+    page.dialogs.element.addressUp = $("#addressUp");
+    page.dialogs.element.dateOfBirthUp = $("#dateOfBirthUp");
+
+    page.dialogs.element.mdAlertDangerCre = $("#modalCreateAccount  .modal-alert-danger");
+    page.dialogs.element.mdAlertDangerUp = $("#modalUpdateAccount .modal-alert-danger")
+
+    page.dialogs.element.inputErrorCre = $("#frmCreateAccount input.error");
+    page.dialogs.element.inputErrorUp = $("#frmUpdateAccount input.error");
+
+
+    let user = new User();
+    let role = new Role();
+
+    let tempUserActive = $.validator.format($.trim(page.element.tempUserActive.val().toString()));
+    let tempUserBlock = $.validator.format($.trim(page.element.tempUserBlock.val().toString()));
+    // let tempOption = $.validator.format($.trim(page.dialogs.element.tempOption.val().toString()));
+
+
+   page.commands.findById = (id) => {
+        return $.ajax({
+            type: "GET",
+            url: page.url.getUserById + id
+        })
+            .done((data) => {
+                user = data;
+            })
+            .fail((err) => {
+                alert("Id not found");
+            })
+    }
+
+    page.commands.addRow = () => {
+        if (user.status.id === 1) {
+            page.element.tbBody.prepend($(tempUserActive(user.id, user.username, user.fullName, user.phone, user.email, user.address, user.dateOfBirth, user.status.statusName, user.role.name)));
+        } else {
+            page.element.tbBody.prepend($(tempUserBlock(user.id, user.username, user.fullName, user.phone, user.email, user.address, user.dateOfBirth, user.status.statusName, user.role.name)));
+        }
+    }
+
+    page.commands.updateRow = () => {
+        let currentRow = $("#tr_" + user.id);
+        let rowUpdated;
+
+        if (user.status.id === 1) {
+            rowUpdated = $(tempUserActive(user.id, user.username, user.fullName, user.phone, user.email, user.address, user.dateOfBirth, user.status.statusName, user.role.name));
+        } else {
+            rowUpdated = $(tempUserBlock(user.id, user.username, user.fullName, user.phone, user.email, user.address, user.dateOfBirth, user.status.statusName, user.role.name));
+        }
+        currentRow.replaceWith(rowUpdated);
+    }
+
+
+    page.dialogs.element.handleCre.on("click", function () {
+        page.dialogs.element.mdCreate.modal("show");
+    })
+
+    page.commands.handleUpdateBtn = () => {
+
+        $(".update").on('click', function () {
+            let id = $(this).data('id');
+            page.commands.findById(id).then(function () {
+
+                page.dialogs.element.fullNameUp.val(user.fullName);
+                page.dialogs.element.phoneUp.val(user.phone);
+                page.dialogs.element.emailUp.val(user.email);
+                page.dialogs.element.addressUp.val(user.address);
+                page.dialogs.element.dateOfBirthUp.val(user.dateOfBirth);
+
+
+                page.dialogs.element.mdUpdate.modal('show');
+            });
+        });
+    }
+
+    page.commands.handleBlockBtn = () => {
+        $(".block").on("click", function () {
+            let id = $(this).data("id");
+
+            page.commands.findById(id).then(function () {
+
+                if (user.status.id === 1) {
+                    App.SweetAlert.showSuspendConfirmDialogCustomer()
+                        .then((result) => {
+
+                            if (result.isConfirmed)
+                                doBlock();
+                        });
+                } else {
+                    App.SweetAlert.showUnlockConfirmDialogCustomer()
+                        .then((result) => {
+
+                            if (result.isConfirmed)
+                                doBlock();
+                        });
+                }
+            }).catch(() => {
+                alert("handleBlock fail!");
+            })
+        })
+    }
+
+    page.commands.handleBtn = () => {
+        page.commands.handleUpdateBtn();
+        page.commands.handleBlockBtn();
+    }
+
+    page.commands.showRole = () => {
+
+        $.ajax({
+            type: "GET",
+            url: page.url.getAllRole
+        }).done((data) => {
+            console.log(data);
+            page.dialogs.element.roleIdCre.empty();
+
+            $.each(data, (i, item) => {
+                let str = "";
+
+                if (item.id !== 1) {
+                    str = `<option value="${item.id}">${item.name}</option>`;
+                }
+                page.dialogs.element.roleIdCre.append(str);
+            })
+        })
+            .fail((err) => {
+                alert("Load role fail!");
+            })
+    }
+
+    page.loadData.loadUsers = () => {
+        $.ajax({
+            type: "GET",
+            url: page.url.getAllUser
+        })
+            .done((item) => {
+                $.each(item, (i, item) => {
+                    user = item;
+                    page.commands.addRow();
+
+                    page.commands.handleBtn();
+
+
+                })
+                page.commands.showRole();
+
+            })
+            .fail((jqXHR) => {
+                let str = ``;
+
+                if (jqXHR.status === 401) {
+                    setTimeout(() => {
+                        App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    }, 3000)
+
+                    location.href = "/logout";
+
+                } else if (jqXHR.status === 403) {
+                    location.href = "/errors/403";
+
+                } else if (jqXHR.status === 500) {
+                    location.href = "/errors/500";
+                } else if (jqXHR.responseJSON) {
+
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}Read-error" class="error" for="${key}Read">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+                    l
+                }
+            })
+    }
+
+
+    page.dialogs.element.btnCreate.on("click", function () {
+        page.dialogs.element.mdAlertDangerCre.removeClass('show').addClass('hide').empty();
+        page.dialogs.element.frmCreate.submit();
+    })
+
+    page.dialogs.element.btnUpdate.on('click', function () {
+        page.dialogs.element.mdAlertDangerUp.removeClass('show').addClass('hide').empty();
+        page.dialogs.element.frmUpdate.submit();
+    })
+
+
+    function doBlock() {
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "PUT",
+            url: page.url.blockUser + user.id,
+            data: JSON.stringify(user)
+        })
+            .done((item) => {
+                user = item;
+
+                page.commands.updateRow();
+                page.commands.handleBtn();
+
+                if (item.status.id === 1) {
+                    App.SweetAlert.showSuccessAlert(App.UNLOCK_USER_SUCCESS);
+                } else {
+                    App.SweetAlert.showSuccessAlert(App.BLOCK_USER_SUCCESS);
+                }
+
+
+            })
+            .fail((jqXHR) => {
+
+                if (jqXHR.status === 401) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    setTimeout(() => {
+                        location.href = "/logout";
+                    }, 3000)
+
+                } else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+                }
+            })
+    }
+
+    page.commands.doCreate = () => {
+
+        role.id = page.dialogs.element.roleIdCre.val();
+        role.code = $('#role option:selected').text();
+        role.name = $('#role option:selected').text();
+        console.log(role);
+
+
+        delete user.id;
+        user.username = page.dialogs.element.usernameCre.val();
+        user.password = page.dialogs.element.passwordCre.val();
+        user.fullName = page.dialogs.element.fullNameCre.val();
+        user.phone = page.dialogs.element.phoneCre.val();
+        user.email = page.dialogs.element.emailCre.val();
+        user.address = page.dialogs.element.addressCre.val();
+        user.dateOfBirth = page.dialogs.element.dateOfBirthCre.val();
+        user.role = role;
+        console.log(user);
+
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: page.url.createUser,
+            data: JSON.stringify(user)
+        })
+            .done((item) => {
+                user = item;
+
+                page.commands.addRow();
+
+                page.commands.handleBtn();
+
+                page.dialogs.element.mdCreate.modal("hide");
+
+                App.SweetAlert.showSuccessAlert(App.CREATE_USER_SUCCESS);
+            })
+            .fail((jqXHR) => {
+
+                let str = ``;
+
+                if (jqXHR.status === 401) {
+                    setTimeout(() => {
+                        App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    }, 3000)
+
+                    location.href = "/logout";
+
+                } else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+                } else if (jqXHR.responseJSON) {
+
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}-error" class="error" for="${key}">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+
+                }
+
+                page.dialogs.element.mdAlertDangerCre.empty().removeClass("hide").addClass("show").append(str);
+            });
+        page.dialogs.element.frmCreate[0].reset();
+    }
+
+    page.commands.doUpdate = () => {
+
+        user.fullName = page.dialogs.element.fullNameUp.val();
+        user.email = page.dialogs.element.emailUp.val();
+        user.phone = page.dialogs.element.phoneUp.val();
+        user.dateOfBirth = page.dialogs.element.dateOfBirthUp.val();
+        user.address = page.dialogs.element.addressUp.val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "PUT",
+            url: page.url.updateUser + user.id,
+            data: JSON.stringify(user)
+        })
+            .done((item) => {
+                user = item;
+
+                page.commands.updateRow();
+                page.commands.handleBtn();
+                page.dialogs.element.mdUpdate.modal("hide");
+
+                App.SweetAlert.showSuccessAlert(App.UPDATE_USER_SUCCESS);
+
+            })
+            .fail((jqXHR) => {
+
+                let str = ``;
+
+                if (jqXHR.status === 401) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    setTimeout(() => {
+                        location.href = "/logout";
+                    }, 3000)
+
+                } else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+                } else if (jqXHR.responseJSON) {
+
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}Up-error" class="error" for="${key}Up">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+                    page.dialogs.element.mdAlertDangerUp.empty().removeClass("hide").addClass("show").append(str);
+                }
+            })
+    }
+
+    page.dialogs.element.mdCreate.on("hidden.bs.modal", function () {
+        page.dialogs.element.mdAlertDangerCre.empty().removeClass('show').addClass('hide');
+        page.dialogs.element.frmCreate[0].reset();
+    });
+
+    page.dialogs.element.mdUpdate.on("hidden.bs.modal", function () {
+        page.dialogs.element.mdAlertDangerUp.empty().removeClass("show").addClass("hide");
+        page.dialogs.element.inputErrorUp.removeClass("error");
+        page.dialogs.element.frmUpdate[0].reset();
+        page.dialogs.element.frmUpdate.validate().resetForm();
+    });
+
+
+    page.commands.getToDay = (day) => {
+        let today = new Date();
+        let dd = String(today.getDate() + day).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+
+        return today;
+    }
+
+    page.dialogs.element.dateOfBirthUp.attr("max", page.commands.getToDay(0));
+
+    page.dialogs.element.dateOfBirthUp.attr("min", "1970-01-01");
+
+    page.dialogs.element.dateOfBirthCre.attr("max", page.commands.getToDay(0));
+
+    page.dialogs.element.dateOfBirthCre.attr("min", "1970-01-01");
+
+
+    page.element.searchIcon.on('click', () => {
+
+        let searchInput = page.element.searchInput.val();
+        console.log(searchInput);
+
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": page.url.searchUser,
+            "data": JSON.stringify(searchInput)
+        })
+            .done((item) => {
+                page.element.tbBody.html("");
+
+                $.each(item, (i, data) => {
+                    user = data;
+                    page.commands.addRow();
+                })
+                page.commands.handleBtn();
+            })
+            .fail ((err) => {
+                alert("Seach fail");
+            })
+    })
+
+    $(document).on('keydown', function(e) {
+        if(e.keyCode === 13) {
+            e.preventDefault();
+            let searchInput = page.element.searchInput.val();
+
+            $.ajax({
+                "headers": {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                "type": "POST",
+                "url": page.url.searchUser,
+                "data": JSON.stringify(searchInput)
+            })
+                .done((item) => {
+                    page.element.tbBody.html("");
+
+                    $.each(item, (i, data) => {
+                        user = data;
+                        page.commands.addRow();
+                    })
+                    page.commands.handleBtn();
+                })
+                .fail ((err) => {
+                    alert("Seach fail");
+                })
+        }
+    });
+
+
+    page.dialogs.element.btnClose.on('click', () => {
+        page.dialogs.element.mdCreate.modal('hide');
+        page.dialogs.element.mdUpdate.modal('hide');
+    });
+
+
+    page.loadData.loadUsers();
+</script>
+</html>

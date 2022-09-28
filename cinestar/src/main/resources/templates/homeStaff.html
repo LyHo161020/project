@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff</title>
+    <th:block th:replace="/layout/head :: head"/>
+    <script src="/assets/js/app/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <th:block th:replace="/layout/navbar :: navbar"/>
+    <th:block th:replace="/layout/left_sidebar_staff :: left_side_staff"/>
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="card-box pd-20 height-100-p mb-30">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <img src="/assets/images/banner-img.png" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="font-20 weight-500 mb-10 text-capitalize">
+                                Welcome back
+                                <div style="margin-bottom: 10px; margin-top: 5px; color: #e031f6" class="weight-600 font-30 text-blue" th:text = "${user.fullName + ' !'}" ></div>
+                            </h4>
+                            <p class="font-18 max-width-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic non repellendus debitis iure, doloremque assumenda. Autem modi, corrupti, nobis ea iure fugiat, veniam non quaerat mollitia animi error corporis.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+        <!-- Footer Start -->
+        <th:block th:replace="layout/footer :: footer"/>
+        <!-- End Footer -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="/layout/script :: script-bar"/>
+
+ <script src="/assets/js/app/jquery.validate-1.19.3.min.js"></script>
+<script>
+    $("#next").on("click", (e) => {
+        e.preventDefault();
+        window.location.href = `/movies`;
+    })
+</script>
+</body>
+</html>

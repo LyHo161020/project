@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/assets/js/app/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div>
+  <button id="next">
+      Movie =>
+  </button>
+</div>
+<th:block th:replace="/layout/script :: script-app"/>
+<script src="/assets/js/app/jquery.validate-1.19.3.min.js"></script>
+<script src="/assets/js/app/jquery.validate.js"></script>
+<script>
+    $("#next").on("click", (e) => {
+        e.preventDefault();
+        window.location.href = `/movies`;
+    })
+</script>
+</body>
+</html>

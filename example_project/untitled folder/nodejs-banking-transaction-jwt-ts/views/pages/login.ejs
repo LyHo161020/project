@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Banking Transaction NodeJS</title>
+    <%- include('../partials/login-head'); %>
+    <link rel="stylesheet" href="lib/css/style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btnBox"></div>
+                <button type="button" class="toggle-btn login-box-btn">Login</button>
+                <button type="button" class="toggle-btn register-box-btn">Register</button>
+            </div>
+            <div class="social-icons tooltip">
+                <img src="/assets/img/fb.png" alt="Facebook">
+                <img src="/assets/img/tw.png" alt="Twitter">
+                <img src="/assets/img/gp.png" alt="Google">
+                <img src="/assets/img/fly.png" class="airplane" alt="Plane">
+                <span class="tooltiptext">
+                    Airplane driving relax. Press the C key to change planes when on the runway. Press the BACKSPACE key to go back.
+                </span>
+            </div>
+            <form id="frmLogin" class="input-group">
+                <input type="text" id="usnLogin" class="input-field" placeholder="Email">
+                <input type="password" id="pwdLogin" class="input-field" placeholder="Password">
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox" class="" value="remember"><span> Remember login</span>
+                    </label>
+                </div>
+                <button type="button" id="btnLogin" class="btn submit-btn">Login</button>
+            </form>
+    
+            <form id="frmRegister" class="input-group">
+                <div class="role">
+                    <div class="custom-select-wrapper" style="width: 100%">
+                        <div class="custom-select">
+                            <div class="custom-select__trigger">
+                                <span>Role group</span>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="custom-options">
+                                <span class='custom-option' data-value='1'>Admin role</span>
+                                <span class='custom-option' data-value='2'>User role</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" id="usnReg" class="input-field" placeholder="Email">
+                <input type="password" id="pwdReg" class="input-field" placeholder="Password">
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox" class="" value="remember"><span> I agree to the Terms & Conditions</span>
+                    </label>
+                </div>
+                <button type="button" id="btnRegister" class="btn submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
+    
+    <section>
+        <div class="clouds">
+            <img src="/assets/img/plane/cloudx.png" alt="" style="--i:1;">
+            <img src="/assets/img/plane/cloudx.png" alt="" style="--i:2;">
+        </div>
+        <div class="clouds clouds2">
+            <img src="/assets/img/plane/cloudx.png" alt="" style="--i:1;">
+            <img src="/assets/img/plane/cloudx.png" alt="" style="--i:2;">
+        </div>
+        <div class="runway"></div>
+        <img src="/assets/img/plane/airbus_a380.png" class="plane" alt="">
+        <div id="speed" style="top: -200px; width: 100px; position: relative; color: #ed8b8b;">
+            <span>250</span>
+            km/h
+        </div>
+    </section>
+
+    <script src="socket.io/socket.io.js"></script>
+    <!-- <script src="http://localhost:3000/socket.io/socket.io.js"></script> -->
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script> -->
+
+    <%- include('../partials/login-script'); %>
+
+    <script type="module">
+        // import { App } from './app.base.js';
+    </script>
+
+    <script type="module">
+
+        import { App } from './lib/js/app.base.js';
+
+        let socket = io('http://localhost:3500');
+
+        let clientId = null;
+
+        let page = {
+            urls: {
+                register: App.BASE_URL_AUTH + "/register",
+                login: App.BASE_URL_AUTH + "/login",
+            },
+            elements: {},
+            commands: {}
+        }
+    
+        let arrPlane = [
+            {
+                "name": "Boeing 777",
+                "code": "boeing_777"
+            },
+            {
+                "name": "Antonov AN-148-201",
+                "code": "antonov_148"
+            },
+            {
+                "name": "Antonov AN-158-100",
+                "code": "antonov_158"
+            },
+            {
+                "name": "Antonov AN-178",
+                "code": "antonov_178"
+            },
+            {
+                "name": "Airbus A380",
+                "code": "airbus_a380"
+            }
+        ];
+    
+        let curIdx = 0,
+            speed,
+            speedUp,
+            speedDown;
+    
+        page.elements.section = $("section");
+        page.elements.frmLogin = $("#frmLogin");
+        page.elements.usnLogin = $("#usnLogin");
+        page.elements.pwdLogin = $("#pwdLogin");
+    
+        page.elements.frmRegister = $("#frmRegister");
+        page.elements.usnReg = $("#usnReg");
+        page.elements.pwdReg = $("#pwdReg");
+    
+        page.elements.btnBox = $("#btnBox");
+        page.elements.loginBoxBtn = $(".login-box-btn");
+        page.elements.registerBoxBtn = $(".register-box-btn");
+        page.elements.btnLogin = $("#btnLogin");
+        page.elements.btnRegister = $("#btnRegister");
+        page.elements.frmRegSelect = $("#frmRegister .role .custom-select");
+        page.elements.frmRegSelectSpan = $("#frmRegister .role .custom-select__trigger span");
+        page.elements.frmRegOpt = $("#frmRegister .role .custom-option");
+        page.elements.frmRegOpts = $("#frmRegister .role .custom-options");
+        page.elements.frmResOptWrapper = $("#frmRegister .role .custom-select-wrapper")
+    
+        page.commands.switchLoginForm = () => {
+            page.elements.frmLogin.css("left", "50px");
+            page.elements.frmRegister.css("left", "450px");
+            page.elements.btnBox.css("left", 0);
+    
+            setTimeout(function () {
+                page.elements.loginBoxBtn.css("color", "#fff");
+                page.elements.registerBoxBtn.css("color", "#000");
+            }, 100);
+        }
+    
+        page.commands.switchRegisterForm = () => {
+            page.elements.frmLogin.css("left", "-400px");
+            page.elements.frmRegister.css("left", "50px");
+            page.elements.btnBox.css("left", "132px");
+    
+            setTimeout(function () {
+                page.elements.loginBoxBtn.css("color", "#000");
+                page.elements.registerBoxBtn.css("color", "#fff");
+            }, 100);
+        }
+    
+        page.commands.login = () => {
+            let user = {
+                username: page.elements.usnLogin.val(),
+                password: page.elements.pwdLogin.val()
+            }
+
+            socket.emit('login', user);
+        }
+    
+        page.commands.register = () => {
+            let roldId = page.elements.frmRegOpts.find(".selected").data("value");
+
+            let user = {
+                username: page.elements.usnReg.val(),
+                password: page.elements.pwdReg.val(),
+                role: {
+                    id: roldId,
+                    code: page.elements.frmRegOpts.find(".selected").text()
+                }
+            }
+
+            socket.emit('register', user);
+        }
+    
+        page.commands.planeHandle = () => {
+            $(document).on('keydown', function(e) {
+                if(e.keyCode === 8) {
+                    $(".hero").removeClass("hide");
+                    $("section").css("display", "none");
+                }
+    
+                if(e.keyCode === 67) {
+                    if ($("img.plane").width() === 250) {
+    
+                        $("section img.plane").attr("src","assets/images/plane/" + arrPlane[curIdx].code + ".png");
+                        App.Notify.showSuccessAlert(arrPlane[curIdx].name + " ready to take off");
+    
+                        if (curIdx === arrPlane.length - 1) {
+                            curIdx = 0;
+                        } else {
+                            curIdx++;
+                        }
+                    }
+                }
+            });
+        }
+    
+        page.commands.speedHandle = () => {
+            page.elements.section.on('mousedown touchstart', function(e) {
+    
+                if (!speedUp) {
+                    speedUp = setInterval(function(){
+                        speed = $("img.plane").width();
+    
+                        $("#speed span").html(speed);
+    
+                        if (speed === 250) {
+                            clearInterval(speedUp);
+                            speedUp = undefined;
+                        }
+    
+                    }, 100);
+                }
+    
+            });
+    
+            page.elements.section.on('mouseup mouseleave touchend', function(e) {
+    
+                if (!speedDown) {
+                    speedDown = setInterval(function(){
+                        speed = $("img.plane").width();
+    
+                        $("#speed span").html(speed);
+    
+                        if (speed === 250) {
+                            clearInterval(speedDown);
+                            speedDown = undefined;
+                        }
+    
+                    }, 100);
+                }
+    
+            });
+        }
+    
+        page.initializeControlEvent = () => {
+    
+            page.elements.loginBoxBtn.on("click", function () {
+                page.commands.switchLoginForm();
+            });
+    
+            page.elements.registerBoxBtn.on("click", function () {
+                page.commands.switchRegisterForm();
+            });
+    
+            page.elements.frmRegOpt.on("click", function () {
+                let role_name = $(this).html();
+                page.elements.frmRegSelectSpan.html(role_name);
+                page.elements.frmRegOpts.find(".selected").removeClass("selected");
+                $(this).addClass("selected");
+            });
+    
+            page.elements.btnLogin.on("click", function () {
+                page.commands.login();
+            });
+    
+            page.elements.btnRegister.on("click", function () {
+                page.commands.register();
+            });
+    
+            page.elements.frmResOptWrapper.on("click", function (event) {
+                event.stopPropagation();
+                page.elements.frmRegSelect.toggleClass("open");
+            });
+    
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%'
+            });
+    
+            $(document).on("click", function () {
+                page.elements.frmRegSelect.removeClass("open");
+            });
+    
+            $(".tooltip .airplane").on("click", function () {
+                $(".hero").addClass("hide");
+                $("section").css("display", "flex");
+            });
+    
+            page.commands.planeHandle();
+    
+            page.commands.speedHandle();
+        }
+    
+        $(function () {
+
+            socket.emit('create-room', 'CodeGym');
+
+            socket.on("server-connection", () => {
+                clientId = socket.id;
+                console.log(clientId);
+            });
+
+            socket.on("login-success", (data) => {
+                $.cookie("JWT", data);
+                App.Notify.showSuccessAlert("Logged in successfully !");
+
+                setTimeout(function () {
+                    window.location.href = "/customers";
+                }, 1000);
+            });
+
+            socket.on("login-error", (jqXHR) => {
+                App.Notify.showErrorAlert("The email or password is incorrect, please check the information again");
+            });
+
+            socket.on("register-success", () => {
+                App.Notify.showSuccessAlert("Successful account registration !");
+    
+                setTimeout(function () {
+                    page.elements.usnLogin.val(page.elements.usnReg.val());
+                    page.elements.pwdLogin.val(page.elements.pwdReg.val());
+                    page.commands.switchLoginForm();
+                }, 1000);
+            });
+
+            socket.on("register-error", (jqXHR) => {
+                console.log(jqXHR);
+                let jsonData = JSON.parse(jqXHR);
+
+                if (jsonData.statusCode === 502) {
+                    App.Notify.showErrorAlert(App.AlertMessageEn.ERROR_502);
+                }
+                else {
+                    if (jsonData.errors) {
+                        if (jsonData.errors.message) {
+                            App.Notify.showErrorAlert(jsonData.errors.message);
+                        } else {
+                            $.each(jsonData.errors, function (key, value) {
+                                App.Notify.showErrorAlert(value);
+                            });
+                        }
+                    } else {
+                        App.Notify.showErrorAlert(App.AlertMessageEn.ERROR_500);
+                    }
+                }                
+            });
+
+            page.initializeControlEvent();
+        });
+    
+    </script>
+</body>
+</html>

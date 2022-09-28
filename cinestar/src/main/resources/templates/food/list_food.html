@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>Food</title>
+    <th:block th:replace="/layout/head :: head"/>
+    <script src="/assets/js/app/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+
+    <th:block th:replace="/layout/navbar :: navbar"/>
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div th:if="${user.role.getId() == 3}">
+        <th:block  th:replace="/layout/left_sidebar_admin :: left_side_admin"/>
+    </div>
+    <div th:if="${user.role.getId() == 2}">
+        <th:block  th:replace="/layout/left_sidebar_staff :: left_side_staff"/>
+    </div>
+    <!-- Left Sidebar End -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                            </div>
+                            <h4 class="page-title"></h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h4 style="font-size: 30px">
+                                        <i class="mdi mdi-food" aria-hidden="true"></i>
+                                        <strong> List Food </strong>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+
+                                <div class="col-sm-8 ">
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <a style="box-shadow: 0 0 1px 1px #4a4b59;color: #b9d4ec" class="btn btn-bordered-pink add float-end">
+                                            <i class="mdi mdi-plus-box" aria-hidden="true"></i>
+                                            <span><strong> Add New Food </strong></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 header-search">
+                                    <form>
+                                        <div class="form-group mb-0">
+                                            <i id="search-icon" class="icon-copy fa fa-search" aria-hidden="true"></i>
+                                            <label for="search-input-food"></label>
+                                            <input id="search-input-food" type="text" class="form-control search-input" placeholder="Search Here">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div id="tickets-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="tickets-table" class="table table-hover m-0 table-centered dt-responsive nowrap w-100 dataTable no-footer dtr-inline"
+                                               cellspacing="0"  role="grid"
+                                               aria-describedby="tickets-table_info" style="width: 1177px;">
+                                            <thead class="bg-light">
+                                            <tr role="row">
+                                                <th class="font-weight-medium sorting_asc" tabindex="0"
+                                                    aria-controls="tickets-table" rowspan="1" colspan="2"
+                                                    style="width: 23.4px;text-align: center;" aria-sort="ascending"
+                                                    aria-label="ID: activate to sort column descending">ID
+                                                </th>
+                                                <th class="font-weight-medium sorting" tabindex="0"
+                                                    aria-controls="tickets-table" rowspan="1" colspan="1"
+                                                    style="width: 150.8px; text-align: center;"
+                                                    aria-label="Subject: activate to sort column ascending">Image
+                                                </th>
+                                                <th class="font-weight-medium sorting" tabindex="0"
+                                                    aria-controls="tickets-table" rowspan="1" colspan="3"
+                                                    style="width: 164.2px; text-align: center;"
+                                                    aria-label="Requested By: activate to sort column ascending">Food/Combo Name
+                                                </th>
+                                                <th class="font-weight-medium sorting" tabindex="0"
+                                                    aria-controls="tickets-table" rowspan="1" colspan="1"
+                                                    style="width: 156.4px;"
+                                                    aria-label="Assignee: activate to sort column ascending">Price
+                                                </th>
+                                                <th class="font-weight-medium sorting" tabindex="0"
+                                                    aria-controls="tickets-table" rowspan="1" colspan="2"
+                                                    style="width: 114.8px; text-align: center;"
+                                                    aria-label="Priority: activate to sort column ascending">Action
+                                                </th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody class="font-14">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+                </div>
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+        <th:block th:replace="/layout/footer :: footer"/>
+        <th:block th:replace="/food/modal_add_food :: modal_add_food"/>
+        <th:block th:replace="/food/modal_edit_food :: modal_edit_food"/>
+    </div>
+
+    <th:block th:replace="/food/temp_list_table :: temp_list_table_food"/>
+    <th:block th:replace="/layout/script :: script-app"/>
+    <th:block th:replace="/layout/script :: script-page"/>
+    <script src="/assets/js/app/jquery.validate-1.19.3.min.js"></script>
+</div>
+</body>
+<script>
+
+    let page = {
+        urls: {
+            loadListFood: App.BASE_URL_FOOD,
+            getAllSize: App.BASE_URL_SIZE,
+            getFoodById: App.BASE_URL_FOOD + "/",
+            addNewFood: App.BASE_URL_FOOD + "/add",
+            editFood: App.BASE_URL_FOOD + "/edit/",
+            removeFood: App.BASE_URL_FOOD + "/remove/",
+            searchFood: App.BASE_URL_FOOD + "/search",
+            logout: App.BASE_URL_LOGOUT
+
+        },
+        element: {},
+        loadData: {},
+        commands: {},
+        dialogs: {
+            element: {},
+            commands: {},
+            close: {},
+            alertDanger: {},
+            inputError: {}
+        }
+    }
+    page.element.tempFood = $("#tempFood");
+    page.element.tbListFood = $("#tickets-table tbody");
+    page.element.btnSearchID = $("#search-input-food");
+    page.element.btnSearchCls = $(".search-input");
+    page.element.btnSearchIcon = $("#search-icon");
+
+
+    page.dialogs.element.btnAddFood = $("#btnAddFood");
+    page.dialogs.element.btnEditFood = $("#btnEditFood");
+    page.dialogs.element.frmAddFood = $("#frmAddFood");
+    page.dialogs.element.frmEditFood = $("#frmEditFood");
+    page.dialogs.element.modalAddFood = $("#modalAddFood");
+    page.dialogs.element.modalEditFood = $("#modalEditFood");
+    page.dialogs.element.foodNameAdd = $("#foodNameAdd");
+    page.dialogs.element.priceAdd = $("#priceAdd");
+    page.dialogs.element.foodNameEdit = $("#foodNameEdit");
+    page.dialogs.element.priceEdit = $("#priceEdit");
+    page.dialogs.element.sizeEdit = $("#sizeEdit");
+
+    page.dialogs.close.btnCloseCls = $(".btn-close");
+
+    page.dialogs.alertDanger.modalAddFood = $("#modalAddFood .modal-alert-danger");
+    page.dialogs.alertDanger.modalEditFood = $("#modalEditFood .modal-alert-danger");
+
+    page.dialogs.inputError.frmAddFood = $("#frmAddFood input.error");
+    page.dialogs.inputError.frmEditFood = $("#frmEditFood input.error");
+
+
+    let food = new Food();
+    let size = new Size();
+
+    let tempFood = $.validator.format($.trim(page.element.tempFood.val().toString()));
+
+
+    page.commands.handleEditFood = () => {
+
+        $(".edit").on("click", function () {
+            let id = $(this).data("id");
+
+            page.commands.findById(id).then(function () {
+
+                page.dialogs.element.foodNameEdit.val(food.name);
+                page.dialogs.element.priceEdit.val(food.price);
+                page.dialogs.element.sizeEdit.val(food.sizes);
+
+                page.dialogs.element.modalEditFood.modal("show");
+            });
+        });
+    }
+
+    page.commands.handleRemoveFood = () => {
+        $(".remove").on("click", function () {
+            let id = $(this).data("id");
+
+            page.commands.findById(id).then(function () {
+                App.SweetAlert.showRemoveConfirmDialogFood()
+                    .then((result) => {
+
+                        if (result.isConfirmed)
+                            page.commands.doRemove();
+                    });
+            })
+        })
+    }
+
+    page.commands.handleBtn = () => {
+        page.commands.handleEditFood();
+        page.commands.handleRemoveFood();
+    }
+
+    page.commands.findById = (id) => {
+        return $.ajax({
+            type: "GET",
+            url: page.urls.getFoodById + id
+        })
+            .done((data) => {
+
+                food = data;
+            })
+            .fail((err) => {
+                alert("ID not found!");
+            })
+    }
+
+    page.commands.showSize = (id) => {
+
+        $.ajax({
+            type: "GET",
+            url: page.urls.getAllSize
+        }).done((data) => {
+
+            $("#tdSize_" + id).html("")
+            page.dialogs.element.sizeEdit.html("")
+
+            $.each(data, (i, item) => {
+                let str = `<span style="margin-right: 3px; width: 20px;height: 16px;" class="badge badge-warning">${item.size} </span>`;
+                $("#tdSize_" + id).append(str);
+                page.dialogs.element.sizeEdit.append(str);
+            })
+        })
+            .fail((err) => {
+                alert(App.FAIL_LOAD);
+            })
+    }
+
+
+    page.commands.loadRow = () => {
+        page.element.tbListFood.append($(tempFood(food.id, food.name, food.price)));
+    }
+
+    page.commands.editRow = (item) => {
+        let currentRow = $("#tr_" + item.id);
+        let editRow = $(tempFood(item.id, item.name, item.price));
+        currentRow.replaceWith(editRow);
+    }
+
+    page.loadData.loadFoods = () => {
+
+        $.ajax({
+            type: "GET",
+            url: page.urls.loadListFood
+        })
+            .done((item) => {
+
+                $.each(item, (i, item) => {
+                    food = item;
+                    page.commands.loadRow();
+                    page.commands.showSize(item.id);
+                    page.commands.handleBtn();
+                })
+
+            })
+            .fail((jqXHR) => {
+                let str = ``;
+
+                if (jqXHR.status === 401) {
+                    setTimeout(() => {
+                        App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    }, 3000)
+
+                    location.href = page.urls.logout;
+
+                }  else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+
+                } else if (jqXHR.responseJSON) {
+
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}Load-error" class="error" for="${key}Load">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+
+                }
+            })
+
+    }
+    page.loadData.loadFoods();
+
+    page.commands.doAdd = () => {
+
+        delete food.id;
+        food.name = page.dialogs.element.foodNameAdd.val();
+        food.price = page.dialogs.element.priceAdd.val();
+        food.deleted = 0;
+
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": page.urls.addNewFood,
+            "data": JSON.stringify(food)
+        })
+            .done((item) => {
+                food = item;
+
+                page.commands.loadRow();
+                page.commands.handleBtn();
+                page.dialogs.element.modalAddFood.modal("hide");
+                page.commands.showSize(item.id);
+
+                App.SweetAlert.showSuccessAlert(App.SUCCESS_ADDED);
+
+            })
+            .fail((jqXHR) => {
+                let str = ``;
+
+                if (jqXHR.status === 401) {
+                    setTimeout(() => {
+                        App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    }, 3000)
+
+                    location.href = page.urls.logout;
+
+                }  else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+
+                } else if (jqXHR.responseJSON) {
+
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}-error" class="error" for="${key}">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+
+                }
+
+                page.dialogs.alertDanger.modalAddFood.empty().removeClass("hide").addClass("show").append(str);
+            })
+    }
+
+    page.commands.doEdit = () => {
+
+        food.name = page.dialogs.element.foodNameEdit.val();
+        food.price =  page.dialogs.element.priceEdit.val();
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "PUT",
+            url: page.urls.editFood + food.id,
+            data: JSON.stringify(food)
+        })
+            .done((item) => {
+                page.commands.editRow(item);
+                page.commands.handleBtn();
+                page.dialogs.element.modalEditFood.modal("hide");
+                page.commands.showSize(item.id);
+
+                App.SweetAlert.showSuccessAlert(App.SUCCESS_EDITED);
+
+            })
+            .fail((jqXHR) => {
+
+                let str = ``;
+
+                if (jqXHR.status === 401) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    setTimeout(() => {
+                        location.href = page.urls.logout;
+                    }, 3000)
+
+                }  else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+
+                } else if (jqXHR.responseJSON) {
+
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}Edit-error" class="error" for="${key}Edit">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+                    page.dialogs.alertDanger.modalEditFood.empty().removeClass("hide").addClass("show").append(str);
+                }
+            })
+    }
+
+    page.commands.doRemove = () => {
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "DELETE",
+            url: page.urls.removeFood + food.id,
+            data: JSON.stringify(food)
+        })
+            .done((item) => {
+
+                let currentRow = $("#tr_" + item);
+                currentRow.replaceWith("");
+
+                page.commands.handleBtn();
+                page.commands.showSize(item.id);
+
+                App.SweetAlert.showSuccessAlert(App.SUCCESS_REMOVED);
+
+            })
+            .fail((jqXHR) => {
+
+                if (jqXHR.status === 401) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    setTimeout(() => {
+                        location.href = page.urls.logout;
+                    },3000)
+
+                }  else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+                }
+            })
+    }
+
+    page.dialogs.element.frmAddFood.validate({
+        rules: {
+            foodNameAdd: {
+                required: true,
+                minlength: 2,
+                maxlength: 100
+            },
+            priceAdd: {
+                required: true,
+                min: 0,
+                max: 1000000
+            }
+        },
+        messages: {
+            foodNameAdd: {
+                required: "Food name is not blank! Please enter valid food name!",
+                minlength: $.validator.format("Minimum of food name is {2} characters!"),
+                maxlength: $.validator.format("Maximum of food name is {100} characters!")
+            },
+            priceAdd: {
+                required: "Price is not blank!",
+                min: $.validator.format("Please enter valid price!"),
+                max: $.validator.format("Maximum of food price is {1.000.000} $!")
+            }
+        },
+        errorLabelContainer: "#modalAddFood .modal-alert-danger",
+        errorPlacement: function (error, element) {
+            error.appendTo("#modalAddFood .modal-alert-danger");
+        },
+        showErrors: function(errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                page.dialogs.alertDanger.modalAddFood.removeClass("hide").addClass("show");
+            } else {
+                page.dialogs.alertDanger.modalAddFood.removeClass("show").addClass("hide").empty();
+                page.dialogs.inputError.frmAddFood.removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function () {
+            page.commands.doAdd();
+        }
+    })
+
+    page.dialogs.element.frmEditFood.validate({
+        rules: {
+            foodNameEdit: {
+                required: true,
+                minlength: 2,
+                maxlength: 100
+            },
+            priceEdit: {
+                required: true,
+                min: 0,
+                max: 1000000
+            }
+        },
+        messages: {
+            foodNameEdit: {
+                required: "Invalid food name! Please enter valid food name!",
+                minlength: $.validator.format("Minimum of food name is {2} characters!"),
+                maxlength: $.validator.format("Maximum of food name is {100} characters!")
+            },
+            priceEdit: {
+                required: "Price is not blank! Please enter price!",
+                min: $.validator.format("Please enter new valid price!"),
+                max: $.validator.format("Max of food price is {1.000.000} $!")
+            }
+        },
+        errorLabelContainer: "#modalEditFood .modal-alert-danger",
+        errorPlacement: function (error, element) {
+            error.appendTo("#modalEditFood .modal-alert-danger");
+        },
+        showErrors: function(errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                page.dialogs.alertDanger.modalEditFood.removeClass("hide").addClass("show");
+            } else {
+                page.dialogs.alertDanger.modalEditFood.removeClass("show").addClass("hide").empty();
+                page.dialogs.inputError.frmEditFood.removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function () {
+            page.commands.doEdit();
+        }
+    });
+
+
+    page.element.btnSearchIcon.on("click", () => {
+        let searchInput = page.element.btnSearchID.val();
+
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": page.urls.searchFood,
+            "data": JSON.stringify(searchInput)
+        })
+            .done((item) => {
+                page.element.tbListFood.html("");
+
+                $.each(item, (i, item) => {
+                    food = item;
+                    page.commands.loadRow();
+                    page.commands.showSize(item.id);
+                    page.commands.handleBtn();
+                })
+
+            })
+            .fail ((err) => {
+                alert("Search fail");
+            })
+    })
+
+    $(document).on('keydown', function(e) {
+        if(e.keyCode === 13) {
+            e.preventDefault();
+            let searchInput = page.element.btnSearchID.val();
+
+            $.ajax({
+                "headers": {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                "type": "POST",
+                "url": page.urls.searchFood,
+                "data": JSON.stringify(searchInput)
+            })
+                .done((item) => {
+                    page.element.tbListFood.html("");
+
+                    $.each(item, (i, item) => {
+                        food = item;
+                        page.commands.loadRow();
+                        page.commands.showSize(item.id);
+                        page.commands.handleBtn();
+                    })
+                })
+                .fail ((err) => {
+                    alert("Search fail");
+                })
+        }
+    });
+
+
+
+
+    $(".add").on("click", () => {
+        page.dialogs.element.modalAddFood.modal("show");
+    })
+
+    page.dialogs.element.modalAddFood.on("hidden.bs.modal", function () {
+        page.dialogs.alertDanger.modalAddFood.empty();
+        page.dialogs.alertDanger.modalAddFood.removeClass("show").addClass("hide");
+        page.dialogs.inputError.frmAddFood.removeClass("error");
+        page.dialogs.element.frmAddFood[0].reset();
+        page.dialogs.element.frmAddFood.validate().resetForm();
+    })
+
+    page.dialogs.element.modalEditFood.on("hidden.bs.modal", function () {
+        page.dialogs.alertDanger.modalEditFood.empty();
+        page.dialogs.alertDanger.modalEditFood.removeClass("show").addClass("hide");
+        page.dialogs.inputError.frmAddFood.removeClass("error");
+        page.dialogs.element.frmEditFood[0].reset();
+        page.dialogs.element.frmEditFood.validate().resetForm();
+    })
+
+    page.dialogs.element.btnEditFood.on("click", function () {
+        page.dialogs.alertDanger.modalEditFood.removeClass("show").addClass("hide");
+        page.dialogs.alertDanger.modalEditFood.empty();
+        page.dialogs.element.frmEditFood.submit();
+    })
+    page.dialogs.element.btnAddFood.on("click", function () {
+        page.dialogs.alertDanger.modalAddFood.removeClass("show").addClass("hide");
+        page.dialogs.alertDanger.modalAddFood.empty();
+        page.dialogs.element.frmAddFood.submit();
+    })
+
+    page.dialogs.close.btnCloseCls.on("click", () => {
+        page.dialogs.element.modalEditFood.modal("hide");
+        page.dialogs.element.modalAddFood.modal("hide");
+    });
+
+</script>
+</html>

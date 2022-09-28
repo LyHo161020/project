@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="modal_update_show_schedule">
+    <div id="modalUpdateShowSchedule" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Show-schedule Information</h5>
+                    <i type="button" class="icon-copy fas fa-close btn-close" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"></i>
+                    <!--                    <i class="icon-copy fa fa-close" aria-hidden="true"></i>-->
+                </div>
+                <div class="modal-body">
+                    <div class="modal-alert-danger hide"></div>
+
+                    <form id="frmUpdateShowSchedule" method="post">
+                        <fieldset class="g-3">
+                            <div class = "row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="movieUp">Movie</label>
+                                    <select class = "form-control" id="movieUp" name="movieUp">
+
+                                    </select>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label class="form-label" for="branchUp">Branch</label>
+                                    <select class = "form-control" id="branchUp" name="branchUp">
+
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="roomUp">Room</label>
+                                    <select class = "form-control" id="roomUp" name="roomUp">
+
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="showDateUp" class="form-label">Show Date</label>
+                                    <input class="form-control" type="date"  id="showDateUp" name="showDateUp" placeholder="Enter Show Date"/>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="showTimeSlotUp" class="form-label">Show Time Slot</label>
+                                    <input class="form-control" type="time"  id="showTimeSlotUp" name="showTimeSlotUp" placeholder="Enter Show Time Slot"/>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnUpdateShowSchedule" class="btn btn-outline-primary">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Update Show Schedule
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-close" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>

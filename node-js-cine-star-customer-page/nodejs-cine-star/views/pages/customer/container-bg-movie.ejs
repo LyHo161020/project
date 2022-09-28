@@ -1,0 +1,409 @@
+<div class="container-bg">
+
+
+    <!--USER-SECTION-->
+    <div class="register-content">
+        <div class="register-wrap">
+            <!--//user-nav//-->
+            <ul>
+                <li class="btn-register"><a data-tmp="Thông tin thành viên" href="javascript:void(0);">Đăng ký
+                    thành viên</a></li>
+                <li class="btn-login"><a data-tmp="Đăng xuất" href="javascript:void(0);">Đăng nhập</a></li>
+            </ul>
+            <a class="hotline" href="tel:028 7300 8881">028 7300 8881</a>
+            <!--//user-nav//-->
+
+            <!--//user-form//-->
+            <div class="block-user">
+
+                <!--register-tab-->
+                <div class="tab-register">
+                    <div class="user-form register">
+                        <div class="icon-arrow"></div>
+                        <h3 class="user-title">Vui lòng nhập thông tin</h3>
+                        <form id="register-top">
+                            <div class="require-col">
+                                <label class="gender"><input type="radio" name="gender" value="1" /><span
+                                        class="gender-name">Nam</span><span class="gender-shape"></span></label>
+                                <label class="gender"><input type="radio" name="gender" value="0" /><span
+                                        class="gender-name">Nữ</span><span class="gender-shape"></span></label>
+                            </div>
+                            <div class="require-col">
+                                <div class="input-text name">
+                                    <span class="focus-text">HỌ TÊN (*)</span>
+                                    <input id="member_name" name="name" type="text" value="" />
+                                </div>
+                                <div class="input-text birth">
+                                    <span class="focus-text">DD/MM/YYYY ( Ngày sinh*)</span>
+                                    <input id="member_birthday" name="birthday" type="text" value="" />
+                                </div>
+                                <div class="input-text address">
+                                    <span class="focus-text">ĐỊA CHỈ (*)</span>
+                                    <input id="member_address" name="address" type="text" value="" />
+                                </div>
+                                <div class="input-text code">
+                                    <span class="focus-text">SỐ CMNN/BẰNG LÁI (*)</span>
+                                    <input id="member_cmnn" name="cmnn" type="text" value="" />
+                                </div>
+
+                                <div class="input-text tel">
+                                    <span class="focus-text">ĐIỆN THOẠI (*)</span>
+                                    <input id="member_phone" name="phone" type="text" value="" />
+                                </div>
+                                <div class="input-text email">
+                                    <span class="focus-text">EMAIL (*)</span>
+                                    <input id="member_email" name="email" type="text" value="" />
+                                </div>
+
+                                <div class="input-text username">
+                                    <span class="focus-text">TÊN ĐĂNG NHẬP (*)</span>
+                                    <input id="member_username" name="username" type="text" value="" />
+                                </div>
+                                <div class="input-text password">
+                                    <span class="focus-text">MẬT KHẨU (*)</span>
+                                    <input id="member_password" name="password" type="password" value="" />
+                                </div>
+                                <div class="input-text confirmpass">
+                                    <span class="focus-text">NHẬP LẠI MẬT KHẨU (*)</span>
+                                    <input id="member_password_confirm" name="password_confirm" type="password"
+                                           value="" />
+                                </div>
+                                <div class="input-check">
+                                    <input id="member_accept" name="accept" value="1"
+                                           type="checkbox" /><span></span>Khách hàng đã đồng ý các điều khoản, điều
+                                    kiện của thành viên Cinestar
+                                </div>
+                                <div class="input-but">
+                                    <input type="button" value="ĐĂNG KÝ" id="btn-register-top" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="user-form modify">
+                        <div class="icon-arrow"></div>
+                        <h3 class="user-title">Chỉnh sửa thông tin cá nhân</h3>
+                        <form id="modify-top">
+                            <div class="require-col">
+                                <label class="gender"><input type="radio" name="gender" value="1"
+                                                             checked /><span class="gender-name">Nam</span><span
+                                        class="gender-shape"></span></label>
+                                <label class="gender"><input type="radio" name="gender" value="0" /><span
+                                        class="gender-name">Nữ</span><span class="gender-shape"></span></label>
+                            </div>
+
+                            <div class="require-col">
+                                <div class="input-text name">
+                                    <span class="focus-text">HỌ TÊN (*)</span>
+                                    <input type="text" value="" />
+                                </div>
+                                <div class="input-text birth">
+                                    <span class="focus-text">DD/MM/YYYY ( Ngày sinh*)</span>
+                                    <input type="text" value="" />
+                                </div>
+                                <div class="input-text address">
+                                    <span class="focus-text">ĐỊA CHỈ (*)</span>
+                                    <input type="text" value="" />
+                                </div>
+                                <div class="input-text code">
+                                    <span class="focus-text">SỐ CMNN/BẰNG LÁI (*)</span>
+                                    <input type="text" value="" />
+                                </div>
+
+                                <div class="input-text tel">
+                                    <span class="focus-text">ĐIỆN THOẠI (*)</span>
+                                    <input type="text" value="" />
+                                </div>
+                                <div class="input-text email">
+                                    <span class="focus-text">EMAIL (*)</span>
+                                    <input type="text" value="" />
+                                </div>
+
+                                <div class="input-text username">
+                                    <span class="focus-text">TÊN ĐĂNG NHẬP (*)</span>
+                                    <input type="text" value="" />
+                                </div>
+                                <div class="input-text password">
+                                    <span class="focus-text">MẬT KHẨU (*)</span>
+                                    <input type="password" value="" />
+                                </div>
+                                <div class="input-text confirmpass">
+                                    <span class="focus-text">NHẬP LẠI MẬT KHẨU (*)</span>
+                                    <input type="password" value="" />
+                                </div>
+                                <div class="input-but">
+                                    <input type="button" value="LƯU LẠI" id="btn-save-tab" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!--register-tab-->
+
+                <!--login-tab-->
+                <div class="tab-login">
+                    <div class="user-form login">
+                        <div class="icon-arrow"></div>
+                        <h3 class="user-title">Vui lòng nhập tên người dùng(email) và mật khẩu</h3>
+                        <form id="login-top">
+                            <div class="require-col">
+                                <div class="input-text username">
+                                    <input name="username" id="login_email" type="text" value="" />
+                                </div>
+                                <div class="input-text password">
+                                    <input name="password" id="login_password" type="password" value="" />
+                                </div>
+                                <div class="input-but">
+                                    <input type="button" value="Đăng nhập" id="btn-login-tab" />
+                                    <a class="user-link" href="javascript:void(0);">Tìm lại mật khẩu</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="user-form forgot">
+                        <div class="icon-arrow"></div>
+                        <h3 class="user-title">Vui lòng nhập địa chỉ email của bạn vào ô bên dưới.<br />
+                            Bạn sẽ nhận được một liên kết để thiết lập lại mật khẩu.</h3>
+                        <form id="forgot-top">
+                            <div class="require-col">
+                                <div class="input-text email">
+                                    <input id="forgot_email" name="email" type="text" value="" />
+                                </div>
+                                <div class="input-text authentication-img">
+                                    <a href="#" onclick="refreshcaptcha(); return false;"><img
+                                            class="captcha_image" src="#" alt="authentication" /></a>
+                                </div>
+                                <div class="input-text authentication">
+                                    <input type="text" name="captcha" id="captcha" value="">
+                                    <input type="hidden" name="captcha_bk" id="captcha_bk" value="">
+                                </div>
+                                <div class="input-but">
+                                    <input type="button" value="Gửi" id="btn-send-top" />
+                                    <a class="user-link" href="javascript:void(0);">Quay lại trang đăng nhập</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!--login-tab-->
+            </div>
+            <!--//user-form//-->
+
+        </div>
+    </div>
+    <!--USER-SECTION-->
+
+    <!--SLIDER-->
+    <div class="slider-inner" data-time="5000">
+        <div class="slide-bg-inner">
+            <div class="bg-inner">
+                <a href="khuyenmai/c-monday.html">
+                    <img src="/assets/customer_page/pictures/c%27monday.jpg" alt="bg" /></a>
+            </div>
+            <div class="bg-inner">
+                <a href="khuyenmai/c-member.html">
+                    <img src="/assets/customer_page/pictures/c%27member.jpg" alt="bg" /></a>
+            </div>
+            <div class="bg-inner">
+                <a href="khuyenmai/c-student.html">
+                    <img src="/assets/customer_page/pictures/hssv.jpg" alt="bg" /></a>
+            </div>
+            <div class="bg-inner">
+                <a href="khuyenmai/c-ten.html">
+                    <img src="/assets/customer_page/pictures/c%27ten.jpg" alt="bg" /></a>
+            </div>
+        </div>
+    </div>
+    <!--SLIDER-->
+
+
+    <!--CART-SECTION--->
+    <div class="cart-content">
+        <div class="cart-wrap">
+
+            <div class="block-title">
+                <h2>Mua vé <br>Online</h2>
+            </div>
+
+            <div class="block-list">
+                <div class="select-list" data-cate="film">
+                    <div class="select-header">
+                        <span></span>
+                        <h3 data-holder="Chọn phim">Chọn phim</h3>
+                    </div>
+                    <div class="select-box">
+                        <ul>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/07-2022/nang-dau-halloween.jpg"
+                                   data-format="2d" data-id="0af0ed19-1d16-45bd-92b9-4b611cbb769b">
+                                <h3>THÁM TỬ LỪNG DANH CONAN (C13): NÀNG DÂU HALLOWEEN</h3>
+                            </a></li>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/08-2022/cuoc-chien-xuyen-khong.jpg"
+                                   data-format="2d" data-id="2a26d413-0e30-43b3-94eb-1b748425a800">
+                                <h3>CUỘC CHIẾN XUYÊN KHÔNG (C16)</h3>
+                            </a></li>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/07-2022/dckscr.jpg"
+                                   data-format="2d" data-id="38c7bd6f-8fea-4999-8afe-fdbb723cca3d">
+                                <h3>DÂN CHƠI KHÔNG SỢ CON RƠI (C13)</h3>
+                            </a></li>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/07-2022/chuyen-ma-giang-duong.jpg"
+                                   data-format="2d" data-id="3e9eeda9-2fef-427b-a1ad-ea0a4d5b440f">
+                                <h3>CHUYỆN MA GIẢNG ĐƯỜNG - HỌC KỲ 2 (C16)</h3>
+                            </a></li>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/08-2022/bullet-train.jpg"
+                                   data-format="2d" data-id="54ec8131-aa1b-49d8-8715-63068cb08eb1">
+                                <h3>SÁT THỦ ĐỐI ĐẦU (C18)</h3>
+                            </a></li>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/07-2022/2037.jpg"
+                                   data-format="2d" data-id="782f74b0-2a57-400a-800d-a42d87cfa020">
+                                <h3>ĐIỀU ƯỚC CUỐI CỦA TÙ NHÂN 2037 (C16)</h3>
+                            </a></li>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/07-2022/lien-minh-sieu-thu.jpg"
+                                   data-format="2d" data-id="ae102bae-ca55-4509-ad75-3f7fbdeff52c">
+                                <h3>LIÊN MINH SIÊU THÚ DC 2D LT</h3>
+                            </a></li>
+                            <li><a href="javascript:void(0);"
+                                   data-img="https://cinestar.com.vn//assets/customer_page/pictures/Cinestar/08-2022/poster-ha-canh-khan-cap.jpg"
+                                   data-format="2d" data-id="e2cb3939-f404-4242-b9ac-9d197e8e0531">
+                                <h3>HẠ CÁNH KHẨN CẤP (C16)</h3>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="select-list" data-cate="cine">
+                    <div class="select-header">
+                        <span></span>
+                        <h3 data-holder="Chọn rạp">Chọn rạp</h3>
+                    </div>
+                    <div class="select-box">
+                        <ul class="warning">
+                            <li><a href="javascript:void(0);">
+                                <h3>Vui lòng chọn phim</h3>
+                            </a></li>
+                        </ul>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="select-list" data-cate="day">
+                    <div class="select-header">
+                        <span></span>
+                        <h3 data-holder="Chọn ngày">Chọn ngày</h3>
+                    </div>
+                    <div class="select-box">
+                        <ul class="warning">
+                            <li><a href="javascript:void(0);">
+                                <h3>Vui lòng chọn phim và rạp</h3>
+                            </a></li>
+                        </ul>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="select-list" data-cate="hour">
+                    <div class="select-header">
+                        <span></span>
+                        <h3 data-holder="Chọn suất chiếu">Chọn suất chiếu</h3>
+                    </div>
+                    <div class="select-box">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--CART-SECTION--->
+
+
+    <!--CONTENT-PAGE-->
+    <div class="content-page">
+
+        <div class="sub-tab film">
+            <ul>
+                <li><a href="javascript:void(0);" data-href="https://cinestar.com.vn/phimdangchieu"
+                       data-name="playing">Phim đang chiếu</a></li>
+                <li><a href="javascript:void(0);" data-href="https://cinestar.com.vn/phimsapchieu"
+                       data-name="coming">Phim sắp chiếu</a></li>
+                <li><a href="javascript:void(0);" data-href="https://cinestar.com.vn/suatchieudacbiet"
+                       data-name="special">Suất chiếu đặc biệt</a></li>
+            </ul>
+        </div>
+
+        <!--MOVIE-TAB-->
+        <div class="tab-movie">
+            <div class="movie-col" data-open="playing">
+                <div id="tbListShowing" class="col-inr">
+>
+
+                </div>
+            </div>
+
+            <div class="movie-col" data-open="coming">
+                <div class="col-inr">
+<!-- 
+                    <div class="film-item cl-org t-2d">
+                        <a href="phim/e8c3a459-a8e6-41d5-96f2-df979add10fc.html">
+                            <div class="film-item-pic">
+                                <img src="pictures/Cinestar/08-2022/gulliver.jpg" alt="GULLIVER DU KÝ" />
+                            </div>
+                            <div class="film-item-txt">
+                                <h3>GULLIVER DU KÝ</h3>
+                                <p>Nhà du hành và thám hiểm thế giới Gulliver được mời quay trở lại Lilliput -
+                                    thị trấn trước đây đã được anh cứu khỏi hạm đội kẻ thù. Khi đến nơi, anh chỉ
+                                    nhận thấy sự phẫn nộ và thất vọng của đám đông vì huyền thoại Gulliver khổng
+                                    lồ giờ đây chỉ là một người bình thường. Cùng lúc đó, kẻ thù lại đe dọa xứ
+                                    xở này thêm một lần nữa.</p>
+                                <p>Khởi chiếu: Từ 05/08/2022</p>
+                            </div>
+                        </a>
+                        <div class="film-item-type">
+                            <span class="icon-2d"></span>
+                            <span class="icon-am3d"></span>
+                            <span class="icon-3d"></span>
+                        </div>
+                        <div class="film-item-but">
+                            <a class="trailer-btn fontsize13"
+                               href="trailer1efa.html?code=MwNgVq-tcGg">TRAILER</a>
+                            <a class="cart-btn fontsize13"
+                               href="lichchieu/e8c3a459-a8e6-41d5-96f2-df979add10fc.html">Mua vé</a>
+                        </div>
+
+                    </div> -->
+                 
+
+                </div>
+            </div>
+
+            <div class="movie-col" data-open="special">
+                <div class="col-inr">
+                </div>
+            </div>
+
+
+        </div>
+        <!--MOVIE-TAB-->
+
+    </div>
+    <!--CONTENT-PAGE-->
+
+
+    <!--BOTTOM-->
+    <%- include('../partials/bottom'); %>
+
+    <!--BOTTOM-->
+
+</div>

@@ -1,0 +1,190 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="navbar">
+    <!-- Topbar Start -->
+    <div class="navbar-custom">
+        <ul class="list-unstyled topnav-menu float-right mb-0">
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
+                   href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="/assets/images/cross.png" alt="user-image" class="rounded-circle">
+                    <span class="pro-user-name ml-1" th:text="${user.fullName}"></span>
+                    <span><i class="mdi mdi-chevron-down"></i></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                    <!-- item-->
+                    <div class="dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome !</h6>
+                    </div>
+
+                    <!-- item-->
+                    <a th:data-id="${user.id}" href="javascript:void(0);"
+                       class="dropdown-item notify-item view-contact">
+                        <i class="remixicon-account-circle-line"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- item-->
+                    <a href="/logout" class="dropdown-item notify-item">
+                        <i class="remixicon-logout-box-line"></i>
+                        <span>Logout</span>
+                    </a>
+
+                </div>
+            </li>
+
+
+            <li class="dropdown notification-list">
+                <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+                    <i class="fe-settings noti-icon"></i>
+                </a>
+            </li>
+
+
+        </ul>
+
+        <!-- LOGO -->
+        <!--        <div class="logo" style="background-image:url(https://cinestar.com.vn/pictures/moi/9Logo/white-2018.png);"></div>-->
+        <div class="logo-box">
+            <a href="index.html" class="logo text-center">
+                        <span class="logo-lg">
+                            <img src="/assets/images/logo-light.png" alt="" height="20">
+                            <!-- <span class="logo-lg-text-light">Xeria</span> -->
+                        </span>
+                <span class="logo-sm">
+                            <!-- <span class="logo-sm-text-dark">X</span> -->
+                            <img src="/assets/images/logo-sm.png" alt="" height="24">
+                        </span>
+            </a>
+        </div>
+
+        <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+
+            <li>
+                <button class="button-menu-mobile waves-effect waves-light">
+                    <i class="fe-menu"></i>
+                </button>
+            </li>
+
+        </ul>
+    </div>
+    <!-- end Topbar -->
+    <th:block th:replace="/user/modal_view_profile :: modal_view_profile"/>
+    <script>
+
+        function findUserById(id) {
+            return $.ajax({
+                type: "GET",
+                url: "http://localhost:10001/api/users/" + id
+            })
+                .done((data) => {
+                    user = data;
+                })
+                .fail(() => {
+                    alert("ID not found!");
+                })
+        }
+
+        function handleViewProfile() {
+
+            $('.view-contact').on('click', function () {
+                let id = $(this).data('id');
+
+                findUserById(id).then(function () {
+                    $('#modalViewProfile').modal('show');
+                    doView();
+                });
+            });
+        }
+
+        handleViewProfile();
+
+
+        function doView() {
+            $.ajax({
+                "type": "GET",
+                "url": "http://localhost:10001/api/users/view/" + user.id
+            })
+                .done((item) => {
+                    let str = `
+                        <div id="imageView" name="imageView" class="col-md-5 align-middle">
+                            <img width="250px" height="auto" class="align-middle ml-3" style="al"
+                                src="/assets/images/cross.png"
+                                alt=""/>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="col-sm-12">
+                                <span style="color: #038500;font-size: 25px" id="roleView" name="roleView"><strong><i class="fas fa-user-tie"></i> ${item.role.code}</strong></span>
+                            </div>
+                            <div class="col-sm-12 mt-3">
+                                <span style="color: #AF0707; font-size: 30px; margin-top: -20px" id="fullNameView" name="fullNameView">${item.fullName}</span>
+                            </div>
+                            <div class="col-sm-12 mt-2">
+                <div class="col-sm-12" >
+                <label class="label" for="dateOFBirthView" class="form-label"><strong>Date Of Birth:</strong></label>
+                <span id="dateOFBirthView" name="dateOFBirthView"> <i> ${item.dateOfBirth}</i></span>
+                </div>
+                <div class="col-sm-12" >
+                <label class="label" for="phoneView" class="form-label"><strong>Phone:</strong></label>
+                <span id="phoneView" name="phoneView"> <i> ${item.phone}</i></span>
+                </div>
+                <div class="col-sm-12">
+                <label class="label" for="emailView" class="form-label"><strong>Email:</strong></label>
+                <span id="emailView" name="emailView"> <i> ${item.email}</i></span>
+                </div>
+                <div class="col-sm-12">
+                <label class="label" for="addressView"><strong>Address:</strong></label>
+                <span id="addressView" name="addressView"> <i> ${item.address}</i></span>
+                `;
+                    if (item.status.id === 1) {
+                        str += `<div id="blockView" style="color: #119f0e; margin-top: 10px;" name="blockView"><i class="fas fa-lock-open" aria-hidden="true"></i> ${item.status.statusName}</div>
+                </div>
+                </div>
+                </div>`;
+                    } else {
+                        str += `<div id="blockView" style="margin-top: 10px" class="text-danger" name="blockView"><i class="fas fa-lock" aria-hidden="true"></i> ${item.status.statusName}</div>
+                </div>
+                </div>
+                </div>
+            `;
+                    }
+
+                    $("#frmViewProfile div").html(str);
+
+                })
+                .fail((jqXHR) => {
+                    alert("adsds");
+                    let str = ``;
+
+                    if (jqXHR.status === 401) {
+                        setTimeout(() => {
+                            App.SweetAlert.showErrorAlert(App.ERROR_401);
+                        }, 3000)
+
+                        location.href = "/logout";
+
+                    } else if (jqXHR.status === 403) {
+                        App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                    } else if (jqXHR.status === 500) {
+                        App.SweetAlert.showErrorAlert(App.ERROR_500);
+                    } else if (jqXHR.responseJSON) {
+
+                        $.each(jqXHR.responseJSON, function (key, value) {
+                            str += `<label id="${key}View-error" class="error" for="${key}View">${value}</label>`;
+                            $("#" + key).addClass("error");
+                        });
+                    }
+                    $("#modalViewProfile .modal-alert-danger").empty().removeClass("hide").addClass("show").append(str);
+                })
+        }
+
+        $('.btn-close').on('click', () => {
+            $('#modalViewProfile').modal('hide');
+        });
+
+    </script>
+</th:block>

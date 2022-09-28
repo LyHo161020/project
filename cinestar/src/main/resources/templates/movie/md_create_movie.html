@@ -1,0 +1,102 @@
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="md_create_movie">
+    <div class="modal fade" id="md_add_movie" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" style="padding-right: 19px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add new movie</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-3">
+                    <div class="modal-alert-danger"></div>
+                    <form id="frmCreateMovie" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Title</label>
+                                    <input class="form-control form-white" placeholder="Enter name" type="text" id="titleCre" name="titleCre">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Premiere date</label>
+                                    <input class="form-control form-white" placeholder="Enter name" type="date" id="premiereDateCre" name="premiereDateCre">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Show duration</label>
+                                    <input class="form-control form-white" placeholder="Enter name" type="number" id="showDurationCre" name="showDurationCre">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Language</label>
+                                    <select id="languageCre" name="languageCre" class="form-control">
+                                        <option value="English-Vietnamse">English-Vietnamse</option>
+                                        <option value="Vietnamese">Vietnamese</option>
+                                        <option value="Korean">Korean</option>
+                                        <option value="Japanese">Japanese</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Director</label>
+                                    <input class="form-control form-white" placeholder="Enter name" type="text" id="directorCre" name="directorCre">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Actor</label>
+                                    <input class="form-control form-white" placeholder="Enter name" type="text" id="actorCre" name="actorCre">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label class="control-label">Description</label>
+                                    <textarea class="form-control" id="descriptionCre" name="descriptionCre" rows="4"></textarea>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label">Trailer</label>
+                                    <input class="form-control form-white" placeholder="Enter trailer" type="text" id="trailerCre" name="trailerCre">
+                                </div>
+                                <div class="row">
+                                    <label class="control-label">Type of movie</label>
+                                    <div class="row" id="categoryContainer">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 control-group file-upload containerUpload">
+                                <div class="image-box text-center">
+                                    <i class="fas fa-cloud-upload-alt" id="uploadIconCre"></i>
+                                    <img src="" alt="" id="viewImageCre">
+                                    <p class="mt-2 tellUpload">Click to upload image!</p>
+                                </div>
+                                <div class="controls" style="display: none;">
+                                    <input type="file" id="imageCre" name="imageCre" accept="image/jpeg, image/png" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div class="text-right pt-2">
+
+                        <button type="button" class="btn btn-light " data-dismiss="modal">Close</button>
+                        <button type="button" id="btn_create_movie" class="btn btn-primary ml-1">Save</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>

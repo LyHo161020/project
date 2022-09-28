@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Login V18</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body style="background-color: #a9a6ff;;">
+<div class="preloader" id="preloader">
+
+</div>
+
+<div class="container">
+    <div class="limiter d-flex">
+        <div class="container-login100 ">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form align-items-center">
+						<span class="login100-form-title-top p-b-43">
+							CINEMA MANAGEMENT
+						</span>
+						<span class="login100-form-title p-b-10">
+							<i> Login to continue </i>
+						</span>
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input id="name" class="input100" type="text" name="email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input id="pass" class="input100" type="password" name="pass">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div>
+                            <a href="#" class="txt1">
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button id="btnLogin" class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-20 p-b-20">
+							<span class="txt2">
+								or sign up using
+							</span>
+                    </div>
+
+                    <div class="login100-form-social flex-c-m">
+                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" class="login100-form-social-item flex-c-m bg3 m-r-5">
+                            <i class="fa fa-google" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5" style="background-image: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+                </form>
+
+                <div class="login100-more" style="background-image: url('/assets/images/Screenshot_25.png');">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:replace="/layout/script :: script-app"/>
+<!--===============================================================================================-->
+<script src="/assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/login/vendor/bootstrap/js/popper.js"></script>
+<script src="/assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/login/vendor/daterangepicker/moment.min.js"></script>
+<script src="/assets/login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/login/js/main.js"></script>
+<!--===============================================================================================-->
+
+</body>
+
+<script>
+    let page = {
+        url: {
+            login: App.BASE_URL_LOGIN
+        },
+        element: {},
+        loadData: {},
+        commands: {},
+        dialogs: {
+            element: {},
+            commands: {}
+        }
+    }
+
+    page.dialogs.element.btnLogin = $("#btnLogin");
+
+
+    page.dialogs.element.btnLogin.on("click", (e) => {
+        e.preventDefault();
+
+        let user = {
+            username: $("#name").val(),
+            password: $("#pass").val()
+        }
+
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": page.url.login,
+            "data": JSON.stringify(user)
+        })
+            .done((resp) => {
+                console.log(resp.roles[0]);
+                if (resp.status.id === 2) {
+                    App.SweetAlert.showErrorAlert("Login Failed! Your account has been lock!");
+                } else if (resp.roles[0].authority === "CUSTOMER") {
+                    App.SweetAlert.showErrorAlert("Login Failed! Your account is not authorized to perform this function!!");
+                } else {
+                    App.SweetAlert.showSuccessAlert('Login successful!');
+                    if (resp.roles[0].authority === "ADMIN") {
+                        setTimeout(function () {
+                            window.location.href = `/home/admin/${resp.id}`;
+                        }, 1000);
+                    } else if (resp.roles[0].authority === "STAFF") {
+                        setTimeout(function () {
+                            window.location.href = `/home/staff/${resp.id}`;
+                        }, 1000);
+                    }
+                }
+            })
+            .fail(() => {
+                App.SweetAlert.showErrorAlert('Login Failed! Email or Password is incorrect!');
+            })
+    })
+</script>
+</html>

@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<th:block th:fragment="temp_list_table_food">
+<!--    <label for="tempFood"></label>-->
+    <textarea id="tempFood" style="display:none">
+        <tr id="tr_{0}" role="row">
+            <td style="text-align: center;" rowspan="1" colspan="2" tabindex="0" class="sorting_1"><b>#{0}</b></td>
+            <td rowspan="1" colspan="1">
+                <a href="javascript: void(0);" class="text-dark">
+                    <img src="/assets/images/popcorn-water.jpg" alt=""
+                         title="img"
+                         class="rounded-circle img-thumbnail">
+                </a>
+            </td>
+            <td style="text-align: center;" rowspan="1" colspan="3">
+                <span class="ml-2">{1}</span>
+            </td>
+            <td style="color: red" rowspan="1" colspan="1">
+                 $ {2}
+            </td>
+            <td style="text-align: center" rowspan="1" colspan="2">
+                <div class="btn-group dropdown">
+                    <a href="javascript: void(0);"
+                       class="dropdown-toggle arrow-none btn btn-light btn-sm"
+                       data-toggle="dropdown" aria-expanded="false"><i
+                            class="mdi mdi-dots-horizontal"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a data-id = "{0}" title="Edit" class="dropdown-item edit"  href="#">
+                            <i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Edit Food</a>
+                        <a data-id = "{0}" class="dropdown-item remove" href="#">
+                            <i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
+                        <a class="dropdown-item" href="#">
+                            <i class="mdi mdi-pencil-off-outline mr-2 text-muted font-18 vertical-middle"></i>Close</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </textarea>
+</th:block>
+

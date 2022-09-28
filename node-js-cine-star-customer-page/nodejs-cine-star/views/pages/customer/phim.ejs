@@ -1,0 +1,503 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <title id="hdtitle">CINESTAR - Hệ thống Rạp chiếu phim giá rẻ, hiện đại bậc nhất</title>
+    <meta name="description"
+        content="Hệ thống rạp chiếu phim Cinestar phục vụ khán giả với những thước phim điện ảnh chất lượng, dịch vụ tốt nhất với giá vé chỉ từ 45.000đ. Đặt vé ngay hôm nay để nhận được những ưu đãi bất ngờ từ Cinestar." />
+    <meta name="keywords"
+        content="Hệ thống rạp chiếu phim Cinestar phục vụ khán giả với những thước phim điện ảnh chất lượng, dịch vụ tốt nhất với giá vé chỉ từ 45.000đ. Đặt vé ngay hôm nay để nhận được những ưu đãi bất ngờ từ Cinestar." />
+    <meta name="author" content="CINESTAR">
+    <meta property="og:url" content="phimdangchieu.html">
+    <meta property="og:title" content="CINESTAR - Hệ thống Rạp chiếu phim giá rẻ, hiện đại bậc nhất">
+    <meta property="og:image" content="/assets/customer_page/pictures/webimages/5TinTuc/122018/banner-web-alita.jpg">
+    <meta property="og:description" content="CINESTAR">
+    <meta property="og:site_name" content="CINESTAR">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="vi_VN">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="YuTiM7jHui55k8Zx2X9vwfCyP9rylFkgxyGeseNR8pk" />
+    <link rel="SHORTCUT ICON" href="/assets/customer_page/catalog/view/theme/default/images/favicon.ico">
+    <link href="/assets/customer_page/catalog/view/theme/default/css/style83a7.css" rel="stylesheet" type="text/css">
+
+    <link href="/assets/customer_page/catalog/view/theme/default/css/validationEngine.jquery.css" rel="stylesheet"
+        type="text/css">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0; url=https://cinestar.com.vn/detect.html" />
+    <script type="text/javascript">
+            </script>
+        <![endif]-->
+    <script>
+        var USERNAME = '';
+        var EMAIL = '';
+        var PHONE = '';
+    </script>
+
+    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/jquery.js"></script>
+    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/history.js"></script>
+    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/common.js"></script>
+    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/slide.js"></script>
+    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/scroll.js"></script>
+    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/load.js"></script>
+
+
+    <script type="text/javascript"
+        src="/assets/customer_page/catalog/view/theme/default/js/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/validate.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159045884-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159045884-1');
+    </script> <!-- Facebook Pixel Code -->
+
+    <script>
+
+        !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, 'script', '../connect.facebook.net/en_US/fbevents.js');
+
+
+
+        fbq('init', '1760220167590183');
+
+        fbq('track', "PageView");
+    </script>
+
+    <noscript>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1760220167590183&amp;ev=PageView&amp;noscript=1" />
+
+    </noscript>
+
+    <!-- End Facebook Pixel Code -->
+</head>
+
+<body id="film-page">
+    <input type="hidden" value="playing" id="movie_status">
+    <!--LOAD-PAGE-->
+    <div class="all-pics"></div>
+    <div class="all-album"></div>
+    <div class="allvideo"></div>
+    <div class="overlay-album"></div>
+    <div class="overlay-video"></div>
+    <div class="overlay-dark"></div>
+    <!--LOAD-PAGE-->
+
+    <div class="nav-click"></div>
+
+    <!--HEAD-->
+    <%- include('../partials/navbar'); %>
+
+        <!--HEAD-->
+
+        <!--CONTAINER-->
+        <div class="container">
+            <%- include('container-bg-movie'); %>
+
+
+            <!--FOOTER-->
+            <%- include('../partials/footer'); %>
+
+                <!--FOOTER-->
+
+        </div>
+        <!--CONTAINER-->
+
+        <!--//ORDER-SECTION//-->
+        <%- include('section-order'); %>
+
+            <!--//ORDER-SECTION//-->
+
+
+            <%- include('term-pop'); %>
+
+                <!-- <%- include('../partials/temp/temp_load_movie_home'); %> -->
+                <%- include('../partials/temp/temp_load_content_price'); %>
+
+
+                    <script>
+                        function refreshcaptcha() {
+                            var c_currentTime = new Date();
+                            var id = c_currentTime.getTime();
+                            $(".captcha_image").attr("src", "https://cinestar.com.vn/?route=information/contact/captcha&id=" + id);
+                            setTimeout(getcode, 1000);
+                        }
+
+                        function getcode() {
+                            var c_currentTime = new Date();
+                            var id = c_currentTime.getTime();
+
+                            $.ajax({
+                                url: 'https://cinestar.com.vn/?route=information/contact/getcode&id=' + id,
+                                type: 'POST',
+                                dataType: 'html',
+                                success: function (data) {
+                                    $('#captcha_bk').val(data);
+                                }
+                            });
+                        }
+                        function validateLogin() {
+                            var flag = true;
+                            var password = checkNull('login_password', 'Mật khẩu không được rỗng.', '', '40', '-275');
+                            var email = checkNull('login_email', 'Email không hợp lệ!', '', '40', '-275');
+
+                            if (!password || !email) {
+                                flag = false;
+                                setTimeout(hideerror, 5000);
+                            }
+                            return flag;
+                        }
+
+                        function validateLogin1() {
+                            var flag = true;
+                            var password = checkNull('login_password1', 'Mật khẩu không được rỗng.', '', '40', '-275');
+                            var email = checkNull('login_email1', 'Email không hợp lệ!', '', '40', '-275');
+
+                            if (!password || !email) {
+                                flag = false;
+                                setTimeout(hideerror, 5000);
+                            }
+                            return flag;
+                        }
+                        //=================================
+                        function validateRegister(tab) {
+
+                            var flag = true;
+                            var name = checkNull('member_name' + tab, 'Vui lòng nhập tên!', '', '40', '-275');
+                            var birthday = checkNull('member_birthday' + tab, 'Vui lòng nhập ngày sinh', '', '40', '-275');
+                            var address = checkNull('member_address' + tab, 'Vui lòng nhập địa chỉ!', '', '40', '-275');
+                            var cmnn = checkNull('member_cmnn' + tab, 'Vui lòng nhập CMNN/BẰNG LÁI', '', '40', '-275');
+                            //var ngaycap = checkNull('member_ngaycap'+tab, 'Vui lòng nhập ngày cấp','','40','-275');
+                            var phone = checkNull('member_phone' + tab, 'Điện thoại không hợp lệ!', '', '40', '-275');
+                            var email = checkMail('member_email' + tab, 'Email không hợp lệ!', '', '40', '-275');
+                            //var honnhan = checkNull('member_honnhan'+tab, 'Vui lòng nhập tình trạng hôn nhân','','40','-275');
+                            //var theloaiyeuthich = checkNull('member_theloaiyeuthich'+tab, 'Vui lòng nhập thể loại yêu thích','','40','-275');
+                            //var lanxemthang = checkNull('member_lanxemthang'+tab, 'Vui lòng nhập số lần xem tháng','','40','-275');
+                            var username = checkNull('member_username' + tab, 'Vui lòng nhập tên đăng nhập', '', '40', '-275');
+                            var password = checkNull('member_password' + tab, 'Mật khẩu không được rỗng.', '', '40', '-275');
+                            //var password_confirm = checkNull('member_password_confirm'+tab, 'Mật khẩu không được rỗng.','','40','-275');
+                            var password_confirm = true;
+                            if ($('#member_password' + tab).val() != $('#member_password_confirm' + tab).val()) {
+                                password_confirm = false;
+                                var left = "40";
+                                var top = "-275";
+                                var mess = 'Xác nhận mật khẩu không đúng';
+                                var id = "member_password_confirm" + tab;
+                                $('#' + id).after('<div class="nameformError parentFormfrm_contact formError" style="left: ' + left + 'px; margin-top: ' + top + 'px; opacity: 0.8;"><div id="error_' + id + '" class="formErrorContent">' + mess + '<br></div><div class="formErrorArrow"><div class="line10"></div><div class="line9"></div><div class="line8"></div><div class="line7"></div><div class="line6"></div><div class="line5"></div><div class="line4"></div><div class="line3n"></div><div class="line2n"></div><div class="line1"></div></div></div>');
+                            }
+                            if (!name || !birthday || !address || !cmnn || !phone || !email || !username || !password || !password_confirm) {
+                                flag = false;
+                                setTimeout(hideerror, 5000);
+                            }
+                            return flag;
+                        }
+
+                        function validateReset(tab) {
+                            var flag = true;
+                            var email = checkMail('forgot_email' + tab, 'Email không hợp lệ!', '', '40', '-275');
+                            var captcha = checkCaptcha('captcha' + tab, 'Vui lòng nhập mã bảo vệ!', '', '40', '-275');
+
+                            if (!email || !captcha) {
+                                flag = false;
+                                setTimeout(hideerror, 5000);
+                            }
+                            return flag;
+                        }
+
+                        function validateUpdate(tab) {
+                            var flag = true;
+                            var name = checkNull('update_name' + tab, 'Vui lòng nhập tên!', '', '40', '-275');
+                            var birthday = checkNull('update_birthday' + tab, 'Vui lòng nhập ngày sinh', '', '40', '-275');
+                            var address = checkNull('update_address' + tab, 'Vui lòng nhập địa chỉ!', '', '40', '-275');
+                            var cmnn = checkNull('update_cmnn' + tab, 'Vui lòng nhập CMNN/BẰNG LÁI', '', '40', '-275');
+                            var phone = checkNull('update_phone' + tab, 'Điện thoại không hợp lệ!', '', '40', '-275');
+                            var email = checkMail('update_email' + tab, 'Email không hợp lệ!', '', '40', '-275');
+                            var username = checkNull('update_username' + tab, 'Vui lòng nhập tên đăng nhập', '', '40', '-275');
+                            var password = checkNull('update_password' + tab, 'Mật khẩu không được rỗng.', '', '40', '-275');
+                            var password_confirm = true;
+                            if ($('#update_password' + tab).val() != $('#update_password_confirm' + tab).val()) {
+                                password_confirm = false;
+                                var left = "40";
+                                var top = "-275";
+                                var mess = 'Xác nhận mật khẩu không đúng';
+                                var id = "update_password_confirm" + tab;
+                                $('#' + id).after('<div class="nameformError parentFormfrm_contact formError" style="left: ' + left + 'px; margin-top: ' + top + 'px; opacity: 0.8;"><div id="error_' + id + '" class="formErrorContent">' + mess + '<br></div><div class="formErrorArrow"><div class="line10"></div><div class="line9"></div><div class="line8"></div><div class="line7"></div><div class="line6"></div><div class="line5"></div><div class="line4"></div><div class="line3n"></div><div class="line2n"></div><div class="line1"></div></div></div>');
+                            }
+
+                            if (!name || !birthday || !address || !cmnn || !phone || !email || !username || !password || !password_confirm) {
+                                flag = false;
+                                setTimeout(hideerror, 5000);
+                            }
+                            return flag;
+                        }
+                        /*
+                            function submitPage(FormId, EventId, Validate, Url, callback){
+                                if(Validate===true){
+                                    var datapost = $(FormId).serialize();
+                                    getPage(Url, 'POST', datapost, callback);
+                                    return false;
+                                }//end if
+                    
+                                $(".formError").click(function(){
+                                    $(this).hide();
+                                });
+                    
+                                return false;
+                            }*/
+                        function changeText() {
+                            var tmp;
+                            $('.register-content .btn-login').addClass('btn-logout');
+                            tmp = $('.register-content .btn-login a').text();
+                            $('.register-content .btn-login a').text($('.register-content .btn-login a').attr('data-tmp'));
+                            $('.register-content .btn-login a').attr('data-tmp', tmp);
+
+                            $('.register-content .btn-register').addClass('btn-userinfo');
+                            tmp = $('.register-content .btn-register a').text();
+                            $('.register-content .btn-register a').text($('.register-content .btn-register a').attr('data-tmp'));
+                            $('.register-content .btn-register a').attr('data-tmp', tmp);
+                        }
+                        $(document).ready(function () {
+                            refreshcaptcha();
+                            //setTimeout(getcode,1000);
+                            $(document).on('click', '#btn-send-top, #btn-send-tab', function () {
+                                var FormId = "";
+                                var Validate = "";
+                                var Url = BASE_URL + "?route=cms/user/forgot";
+                                if ($(this).attr('id') === 'btn-send-top') {
+                                    FormId = "#forgot-top";
+                                    Validate = validateReset('');
+                                } else {
+                                    FormId = "#forgot";
+                                    Validate = validateReset('1');
+                                }
+
+                                if (Validate === true) {
+                                    var dataPost = $(FormId).serialize();
+                                    getPage(Url, 'POST', dataPost, function (data) {
+                                        $('.loadicon').fadeOut(300, 'linear', function () {
+                                            $('.loadicon').remove();
+                                        });
+                                        data = JSON.parse(data);
+                                        if (data.status === 200) {
+                                            $('body').append('<div  class="contact-success color-blue">' + data.message + '</div>');
+                                            $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                            setTimeout(hidemsg, 5000);
+                                        } else {
+                                            $('body').append('<div  class="contact-success color-blue">' + data.message + '</div>');
+                                            $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                            setTimeout(hidemsg, 5000);
+                                        }
+
+                                    });
+                                }
+                            });
+
+                            $(document).on('click', '#btn-save-top, #btn-save-tab', function () {
+                                var FormId = "";
+                                var Validate = "";
+                                var Url = BASE_URL + "?route=cms/user/update";
+                                if ($(this).attr('id') === 'btn-save-top') {
+                                    FormId = "#modify-top";
+                                    Validate = validateUpdate('');
+                                } else {
+                                    FormId = "#modify";
+                                    Validate = validateUpdate('1');
+                                }
+
+                                if (Validate === true) {
+                                    var dataPost = $(FormId).serialize();
+                                    getPage(Url, 'POST', dataPost, function (data) {
+                                        $('.loadicon').fadeOut(300, 'linear', function () {
+                                            $('.loadicon').remove();
+                                        });
+                                        data = JSON.parse(data);
+                                        if (data.status === 200) {
+                                            $('.close-user').trigger('click');
+                                            $('body').append('<div  class="contact-success color-blue">' + data.message + '</div>');
+                                            $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                            setTimeout(hidemsg, 5000);
+                                        } else {
+                                            $('body').append('<div  class="contact-success color-blue">' + data.message + '</div>');
+                                            $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                            setTimeout(hidemsg, 5000);
+                                        }
+
+                                    });
+                                }
+                            });
+                            $('#btn-register-top, #btn-register-tab').on('click', function () {
+                                var FormId = "";
+                                var Validate = "";
+                                var Url = BASE_URL + "dangky";
+                                var accept = "";
+                                if ($(this).attr('id') === 'btn-register-top') {
+                                    FormId = "#register-top";
+                                    Validate = validateRegister('');
+                                    accept = "#member_accept";
+                                } else {
+                                    FormId = "#register";
+                                    Validate = validateRegister('1');
+                                    accept = "#member_accept1";
+                                }
+
+                                if (Validate === true) {
+                                    if ($(accept).is(":checked")) {
+                                        var dataPost = $(FormId).serialize();
+                                        getPage(Url, 'POST', dataPost, function (data) {
+                                            $('.loadicon').fadeOut(300, 'linear', function () {
+                                                $('.loadicon').remove();
+                                            });
+                                            data = JSON.parse(data);
+                                            if (data.status === 200) {
+                                                isLogin = true;
+                                                $(FormId).find("input[type=text], textarea").val("");
+                                                $(FormId + ' .focus-text.hide').removeClass('hide');
+                                                if (FormId === '#register') {
+                                                    $('.user-form.register').css({ 'display': 'none' });
+                                                    $('.user-form.modify').css({ 'display': 'block', 'opacity': 0 });
+                                                    if (movie.movie_hour !== '') {
+                                                        order();
+                                                    }
+                                                } else {
+                                                    $('.tab-register').css({ 'display': 'block' });
+                                                    $('.block-user .user-form.register').css({ 'display': 'none' });
+                                                }
+                                                $('body').append('<div  class="contact-success color-blue">' + data.message + '</div>');
+
+                                                changeText();
+                                                $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                                setTimeout(hidemsg, 5000);
+                                                /*
+                                                    $('.block-user .user-form.modify').css({'display': 'block', 'opacity':0});
+                                                    $("html, body").stop().animate({scrollTop: 0}, 200, 'linear', function(){
+                                                        $('.block-user .user-form.modify').css({'opacity': 1});
+                                                    });*/
+                                            } else {
+                                                $('body').append('<div  class="contact-success color-blue">' + data.message + '</div>');
+                                                $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                                setTimeout(hidemsg, 5000);
+                                            }
+
+                                        });
+                                    } else {
+                                        $('body').append('<div  class="contact-success color-blue">Vui lòng chọn đồng ý các điều khoản</div>');
+                                        $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                        setTimeout(hidemsg, 5000);
+                                    }
+                                }
+                            });
+                            $('#btn-login-tab, #btn-login-top').click(function () {
+                                var valid = false;
+                                var FormId = "";
+                                if ($(this).attr('id') === 'btn-login-top') {
+                                    valid = validateLogin1();
+                                    FormId = "#login";
+                                } else {
+                                    valid = validateLogin();
+                                    FormId = "#login-top";
+                                }
+                                var $this = $('.register-wrap .btn-login');
+                                if (valid === true) {
+                                    $('body').append('<div class="loadicon" style="display:block"><span class="circle"></span></div>');
+                                    var datapost = $(FormId).serialize();
+                                    var url = "dangnhap.html";
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: url,
+                                        data: datapost,
+
+                                        success: function (success) {
+                                            $('.loadicon').fadeOut(300, 'linear', function () {
+                                                $('.loadicon').remove();
+                                            });
+                                            $('.contact-success').remove();
+                                            var json = JSON.parse(success);
+                                            if (json.status === 200) {
+                                                USERNAME = json.user.NAME;
+                                                EMAIL = json.user.EMAIL;
+                                                PHONE = json.user.PHONE;
+
+                                                changeText();
+                                                isLogin = true;
+                                                $(FormId).find("input[type=text], textarea").val("");
+                                                $(FormId + ' .focus-text.hide').removeClass('hide');
+                                                $('body').append('<div  class="contact-success color-blue">Đăng nhập thành công.</div>');
+
+                                                //dong form login
+                                                $('.register-wrap ul li').removeClass('active');
+                                                $('.block-user .tab-register, .block-user .tab-login').fadeOut(200);
+                                                $('.register-content').removeClass('showbox');
+
+                                                if (movie.movie_hour !== '') {
+                                                    order();
+                                                }
+
+                                                //$('.user-people').addClass('active');
+                                                $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                            } else {
+                                                $('body').append('<div  class="contact-success color-red">Đăng nhập thất bại.</div>');
+                                            }
+                                            $("html, body").animate({ scrollTop: 0 }, 'slow');
+                                            setTimeout(hidemsg, 5000);
+                                        }
+                                    });  //end ajax
+                                    return false;
+                                }//end if
+
+                                $(".formError").click(function () {
+                                    $(this).hide();
+                                });
+
+                                return false;
+                            });
+
+
+                            //$('#btn-contact-reset').click(function(){hideerror();});
+                            $("#phone").numeric();
+                            //$("#fax").numeric();
+
+                            $('#frm_contact').keydown(function (e) {
+                                if (13 === e.keyCode) {
+                                    $('#btn-contact-submit').trigger('click');
+                                }
+                            });
+
+                        });
+
+                    </script>
+                    <form id="payment" method="post" action="https://cinestar.com.vn/redirectpayment">
+                        <input type="hidden" value="" name="amount" id="amount">
+                        <input type="hidden" value="" name="seats" id="seats">
+                        <input type="hidden" value="" name="combos" id="combos">
+                        <input type="hidden" value="" name="cinema_id" id="cinema_id">
+                        <input type="hidden" value="" name="cinema_name" id="cinema_name">
+                        <input type="hidden" value="" name="movie_name" id="movie_name">
+                        <input type="hidden" value="" name="payment_method" id="payment_method">
+                        <input type="hidden" value="" name="movie_hour" id="movie_hour">
+                        <input type="hidden" value="" name="movie_date" id="movie_date">
+                        <input type="hidden" value="" name="pseats" id="pseats">
+                        <input type="hidden" value="" name="room_name" id="room_name_01">
+                    </form>
+                    <div class="overlay-menu"></div>
+                    <div class="go-top"></div>
+                    <div class="scroll-down"></div>
+                    <input type="hidden" value="https://cinestar.com.vn/" id="BASE_URL" />
+
+                    <script src="socket.io/socket.io.js"></script>
+
+                    <script src="/assets/iziToast/v1.4/iziToast.min.js"></script>
+                    <script src="/assets/sweetalert/v2/sweetalert.js"> </script>
+                    <script type="text/javascript" src="/assets/customer_page/catalog/view/theme/default/js/btqe063.js"></script>
+                    <script type="module" src="/assets/js/main.movie.js"></script>
+</body>
+
+</html>
